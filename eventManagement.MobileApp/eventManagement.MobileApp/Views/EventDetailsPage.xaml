@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="eventManagement.MobileApp.Views.EventDetailsPage">
+    <ContentPage.Content>
+            <StackLayout VerticalOptions="Start"  Padding="10, 30">
+                <Label Text="{Binding Event.Name}" HorizontalTextAlignment="Center" FontSize="18" FontAttributes="Bold" Margin="0,0,0,15"></Label>
+                <Label FontSize="15" HorizontalTextAlignment="Center" Text="{Binding Event.Category.Name}" />
+            <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Organizatior:" FontAttributes="Bold"/>
+                    <Label Text="{Binding Event.Organization.Name}"></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                    <Label Text="Grad:" FontAttributes="Bold"/>
+                    <Label Text="{Binding Event.City.Name}"></Label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout  Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Adresa:" FontAttributes="Bold"/>
+                    <Label Text="{Binding Event.Address}"></Label>
+                </StackLayout>
+                <StackLayout  HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                    <Label Text="Trajanje:" FontAttributes="Bold"/>
+                    <Label Text="{Binding Event.Duration}"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout  Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Vrijeme:" FontAttributes="Bold"/>
+                    <Label Text="{Binding Event.DateTimeFormatted}"></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                    <Label Text="Kotizacija:" FontAttributes="Bold"/>
+                    <Label Text="{Binding Event.Coatization}"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Ukupno mjesta:" FontAttributes="Bold"/>
+                    <Label Text="{Binding Event.MaxPlaces}"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Padding="0" Orientation="Horizontal">
+                <StackLayout IsVisible="{Binding DisplayRatingInput}"  Margin="0,0,25,0">
+                    <Label Text="Ocjena:" FontAttributes="Bold"/>
+                    <Entry Text="{Binding RatingValue}" TextChanged="Entry_TextChanged" Placeholder="1-5" VerticalOptions="Start" />
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                    <Button IsVisible="{Binding NoParticipation}" Clicked="Button_Clicked" Text="Dolazim" />
+                    <Button IsVisible="{Binding AlreadyParticipate}" Clicked="Button_Clicked_1" Text="Ne dolazim" />
+                </StackLayout>
+            </StackLayout>
+            <Label Text="Opis:" Padding="0,10,0,0" FontAttributes="Bold"></Label>
+            <ScrollView>
+                <Label Text="{Binding Event.Description}"></Label>
+            </ScrollView>
+
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout>
+                        <Label Margin="0, 15, 0, 0" HorizontalTextAlignment="Center" FontSize="17" FontAttributes="Bold" Text="Predavači" />
+                        <ListView ItemsSource="{Binding Event.Speakers}" ItemSelected="ListView_ItemSelected">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
+                                            <Label Text="{Binding User.FirstName}" />
+                                            <Label Text="{Binding User.LastName}" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Margin="0, 15, 0, 0" HorizontalTextAlignment="Center" FontSize="17" FontAttributes="Bold" Text="Učesnici" />
+                        <ListView ItemsSource="{Binding Event.Participants}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
+                                            <Label Text="{Binding User.FirstName}" />
+                                            <Label Text="{Binding User.LastName}" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+
+                    <Label Text="Preporučeni događaji" />
+                    <ListView ItemsSource="{Binding EventsList}" ItemSelected="ListView_ItemSelected_1">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Margin="0, 0, 0, 10">
+                                        <Label Text="{Binding Name}" 
+                                d:Text="{Binding .}"
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

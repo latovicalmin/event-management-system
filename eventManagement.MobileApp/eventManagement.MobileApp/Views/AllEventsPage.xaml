@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:eventManagement.MobileApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eventManagement.MobileApp.Views.AllEventsPage">
+    <ContentPage.BindingContext>
+        <vm:EventsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="10, 25, 10, 10" HorizontalOptions="Center">
+            <SearchBar Placeholder="Naziv" Text="{Binding EventName}"></SearchBar>
+            <Picker x:Name="categoriesPicker" Title="Kategorije" ItemsSource="{Binding CategoriesList}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedCategory}"></Picker>
+            <Picker x:Name="organizationsPicker" Title="Organizacije" ItemsSource="{Binding OrganizationsList}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedOrganization}"  Margin="0,0,0,20"></Picker>
+            <ListView ItemsSource="{Binding EventsList}" ItemSelected="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="0, 0, 0, 10">
+                                <Label Text="{Binding Name}" 
+                                d:Text="{Binding .}"
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label FontSize="10" Text="Vrijeme:" />
+                                    <Label FontSize="10" Text="{Binding DateTimeFormatted}" />
+                                </StackLayout>
+                                <Label Text="{Binding Description}" 
+                                d:Text="Item descripton"
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

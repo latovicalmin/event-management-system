@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="clr-namespace:eventManagement.MobileApp.ViewModels"
+             xmlns:converters="clr-namespace:eventManagement.MobileApp.Converters"
+             mc:Ignorable="d"
+             x:Class="eventManagement.MobileApp.Views.OrganizationsPage">
+    <ContentPage.BindingContext>
+        <viewmodels:OrganizationsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="10, 25, 10, 10" HorizontalOptions="Center">
+            <SearchBar Placeholder="Naziv"  Margin="0, 0, 0, 20" Text="{Binding OrganizationName}" />
+            <ListView ItemsSource="{Binding OrganizationsList}" ItemSelected="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame OutlineColor="Black">
+                                <StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="15">
+                                    <Image Source="{Binding Logo, Converter={StaticResource imgConv}}"></Image>
+                                    <Label HorizontalTextAlignment="Center" Text="{Binding Name}" FontSize="16" />
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

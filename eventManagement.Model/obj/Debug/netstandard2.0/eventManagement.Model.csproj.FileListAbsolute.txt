@@ -1,0 +1,8 @@
+C:\Users\LA\Documents\RS2\eventManagement\eventManagement.Model\bin\Debug\netstandard2.0\eventManagement.Model.deps.json
+C:\Users\LA\Documents\RS2\eventManagement\eventManagement.Model\bin\Debug\netstandard2.0\eventManagement.Model.dll
+C:\Users\LA\Documents\RS2\eventManagement\eventManagement.Model\bin\Debug\netstandard2.0\eventManagement.Model.pdb
+C:\Users\LA\Documents\RS2\eventManagement\eventManagement.Model\obj\Debug\netstandard2.0\eventManagement.Model.csprojAssemblyReference.cache
+C:\Users\LA\Documents\RS2\eventManagement\eventManagement.Model\obj\Debug\netstandard2.0\eventManagement.Model.AssemblyInfoInputs.cache
+C:\Users\LA\Documents\RS2\eventManagement\eventManagement.Model\obj\Debug\netstandard2.0\eventManagement.Model.AssemblyInfo.cs
+C:\Users\LA\Documents\RS2\eventManagement\eventManagement.Model\obj\Debug\netstandard2.0\eventManagement.Model.dll
+C:\Users\LA\Documents\RS2\eventManagement\eventManagement.Model\obj\Debug\netstandard2.0\eventManagement.Model.pdb

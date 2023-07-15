@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="clr-namespace:eventManagement.MobileApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eventManagement.MobileApp.Views.SpeakersPage">
+    <ContentPage.BindingContext>
+        <viewmodels:SpeakersViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="10, 25, 10, 10" HorizontalOptions="Center">
+            <SearchBar Text="{Binding FirstName}" Placeholder="Ime" />
+            <SearchBar Margin="0,0,0,15" Text="{Binding LastName}" Placeholder="Prezime" />
+
+            <ListView ItemsSource="{Binding SpeakersList}" ItemSelected="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="0, 0, 0, 10">
+                                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                    <Label FontAttributes="Bold" HorizontalTextAlignment="Center" Text="{Binding FirstName}" />
+                                    <Label FontAttributes="Bold" HorizontalTextAlignment="Center" Text="{Binding LastName}" />
+                                </StackLayout>
+                                <Label Text="{Binding Email}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

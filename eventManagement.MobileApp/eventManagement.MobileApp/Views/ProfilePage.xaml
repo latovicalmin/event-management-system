@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="eventManagement.MobileApp.Views.ProfilePage">
+    <ContentPage.Content>
+        <StackLayout Padding="15">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Ime:" />
+                <Label Text="{Binding User.FirstName}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Prezime:" />
+                <Label Text="{Binding User.LastName}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Email:" />
+                <Label Text="{Binding User.Email}" />
+            </StackLayout>
+            <Label Text="Događaji" />
+            <ListView ItemsSource="{Binding EventsList}" ItemSelected="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="0, 0, 0, 10">
+                                <Label Text="{Binding Name}" 
+                                d:Text="{Binding .}"
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="13" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

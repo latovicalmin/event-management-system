@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:eventManagement.MobileApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eventManagement.MobileApp.Views.SignupPage">
+    <ContentPage.BindingContext>
+        <vm:SignupViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Padding="10">
+            <Label FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center" Text="EM Sistem" Margin="0,0,0,15" />
+            <Entry Placeholder="Ime" Text="{Binding FirstName}" />
+            <Entry Placeholder="Prezime" Text="{Binding LastName}" />
+            <Entry Placeholder="Email"  Text="{Binding Email}"/>
+            <Entry Placeholder="Korisničko ime" Text="{Binding Username}" />
+            <Entry IsPassword="True" Placeholder="Lozinka" Text="{Binding Password}" />
+            <Label x:Name="loginLabel" Margin="0, 15, 0, 15"  HorizontalTextAlignment="Center" Text="Već imate račun?" TextColor="CadetBlue" />
+            <Button Text="Registruj se" Command="{Binding signUpCommand}" TextColor="White" FontAttributes="Bold"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
